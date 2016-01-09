@@ -12,7 +12,7 @@ public class PhLabeler {
 				done = true;
 			} else {
 				PH pH = new PH(phValue);
-				System.out.println(" --> " + pH.label();
+				System.out.println(" --> " + pH.label());
 			}
 		}
 	}
