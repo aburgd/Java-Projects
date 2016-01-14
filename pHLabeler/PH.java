@@ -2,34 +2,29 @@ package pH;
 
 public class PH {
 		// strongly acidic
-		public static final double STRONG_AC_MIN = 0.0;
-		public static final double STRONG_AC_MAX = 2.0;
+		public static final double STRONG_AC_MIN = 0.00;
 		// acidic
-		public static final double AC_MIN = 2.1;
-		public static final double AC_MAX = 4.0;
+		public static final double AC_MIN = 2.10;
 		// weakly acidic
-		public static final double WEAK_AC_MIN = 4.1;
-		public static final double WEAK_AC_MAX = 6.0;
+		public static final double WEAK_AC_MIN = 4.10;
 		// near neutral bottom range
-		public static final double BOT_NEUT_MIN = 6.1;
-		public static final double BOT_NEUT_MAX = 6.99;
+		public static final double BOT_NEUT_MIN = 6.10;
 		//neutral
-		public static final double NEUTRAL = 7.0;
+		public static final double NEUTRAL = 7.00;
 		// near neutral top range
 		public static final double TOP_NEUT_MIN = 7.01;
-		public static final double TOP_NEUT_MAX = 8.0;
 		// weakly alkaline
-		public static final double WEAK_AL_MIN = 8.1;
-		public static final double WEAK_AL_MAX = 10.0;
+		public static final double WEAK_AL_MIN = 8.10;
 		// alkaline
-		public static final double AL_MIN = 10.1;
-		public static final double AL_MAX = 12.0;
+		public static final double AL_MIN = 10.10;
 		// strongly alkaline
-		public static final double STRONG_AL_MIN = 12.1;
-		public static final double STRONG_AL_MAX = 14.0;
+		public static final double STRONG_AL_MIN = 12.10;
 		
-		public PH(double PH) {
-			if (pH < STRONG_AC_MIN || pH > STRONG_AL_MAX) {
+		public static final double MIN = 0.00;
+		public static final double MAX = 14.00;
+		
+		public PH(double pH) {
+			if (pH < STRONG_AC_MIN || pH > 14.00) {
 				System.err.println("PH(): bad argument received: " + pH);
 				System.exit(1);
 			} else {
@@ -38,32 +33,29 @@ public class PH {
 		}
 		
 		public String label() {
-			if (myValue < STRONG_AC_MIN || myValue > STRONG_AL_MAX) {
+			if (myValue < MIN || myValue > MAX) {
 				return "error";
-			} 
-			if (myValue >= STRONG_AC_MIN && myValue <= STRONG_AC_MAX) {
+			} else if (myValue <= STRONG_AC_MIN) {
 				return "strongly acidic";
-			} else if (myValue >= AC_MIN && myValue <= AC_MAX) {
+			} else if (myValue > STRONG_AC_MIN && myValue <= AC_MIN) {
 				return "acidic";
-			} else if (myValue >= WEAK_AC_MIN && myValue <= WEAK_AC_MAX) {
-				return "weakly acidic";
-			} else if (myValue >= BOT_NEUT_MIN && myValue <= BOT_NEUT_MAX) {
-				return "nearly neutral";
-			} else if (myValue == NEUTRAL) {
-				return "nearly";
-			} else if (myValue >= TOP_NEUT_MIN && myValue <= TOP_NEUT_MAX) {
-				return "nearly neutral";
-			} else if (myValue >=WEAK_AL_MIN && myValue <= WEAK_AL_MAX) {
-				return "weakly alkaline";
-			} else if (myValue >= AL_MIN && myValue <= AL_MAX) {
+			} else if ( (myValue > AC_MIN && myValue < NEUTRAL) || (myValue > NEUTRAL && myValue < WEAK_AL_MIN) ) {
+				return "near neutral";
+			} else if (myValue >= WEAK_AL_MIN && myValue < AL_MIN) {
+				return "weak alkaline";
+			} else if (myValue >= AL_MIN && myValue < STRONG_AL_MIN) {
 				return "alkaline";
-			} else if (myValue >= STRONG_AL_MIN && myValue <= STRONG_AL_MAX) {
-				return "strongly alkaline";
+			} else if (myValue >= STRONG_AL_MIN && myValue < MAX) {
+				return "strong alkaline";
+			} else if (myValue == NEUTRAL) {
+				return "neutral";
 			} else {
-				System.err.println("PH(): bad argument received: " + pH);
-				System.exit(1);
+				return null;
 			}
 			
+		}
+		
+		public String toString() { return myValue + " (" + label() + ")"; }
 		private double myValue;
 		
 	}
