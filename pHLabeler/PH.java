@@ -55,7 +55,6 @@ public class PH {
 			
 		}
 		
-		public String toString() { return myValue + " (" + label() + ")"; }
 		private double myValue;
 		
 	}
