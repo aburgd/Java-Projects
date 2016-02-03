@@ -6,7 +6,7 @@ public class LEDDigits {
 
 	public static void main(String[] args) {
 		kbd = new Scanner(System.in);
-		String horiz = "--";
+		String horiz = " --";
 		String dblVert = "|  |";
 		String lVert = "|   ";
 		String rVert = "   |";
