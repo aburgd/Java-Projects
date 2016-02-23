@@ -7,6 +7,7 @@ public class Palindrome {
 	
 	public static String reverseString(String str) {
 		String revStr = new StringBuilder(str).reverse().toString();
+		revStr.replaceAll("[^A-Za-z]+", "").toUpperCase();
 		return revStr;
 	}
 	
@@ -26,9 +27,9 @@ public class Palindrome {
 		switch (ans) {
 		case 'u': case 'U':
 			System.out.println("Enter string to check: ");
-			String str = scanner.next().toLowerCase();
-			String rev = Palindrome.reverseString(str);
-			boolean check = checkStr(str, rev);
+			String str = scanner.nextLine().toUpperCase().replaceAll("[^A-Za-z]+", "");
+			String revStr = Palindrome.reverseString(str);
+			boolean check = checkStr(str, revStr);
 			System.out.println( check );
 			break;
 			
@@ -36,9 +37,9 @@ public class Palindrome {
 			Scanner in = FileOps.promptForFileIn("Enter path to file to check: ");
 			
 			if ( in.hasNext() ) {
-				str = in.nextLine().toLowerCase();
-				rev = reverseString(str);
-				check = checkStr(str, rev);
+				str = in.nextLine().toUpperCase().replaceAll("[^A-Za-z]+", "");
+				revStr = reverseString(str);
+				check = checkStr(str, revStr);
 				System.out.println( check );
 				in.close();
 			} else {
