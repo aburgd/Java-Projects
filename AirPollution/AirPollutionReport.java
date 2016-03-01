@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class AirPollutionReport {
+	private static Scanner kbd;
+
 	public static void main(String[] args) {
 		final int NUM_READINGS = 5;
 		double [] readings = new double[NUM_READINGS];
@@ -10,7 +12,7 @@ public class AirPollutionReport {
 	}
 	
 	private static void readReadingsInto(double [] array) {
-		Scanner kbd = new Scanner(System.in);
+		kbd = new Scanner(System.in);
 		System.out.println("To compute the pollution index, ");
 		for (int i = 0; i < array.length; i++) {
 			System.out.print("Enter reading #" + (i+1) + "/" + array.length + ": ");
