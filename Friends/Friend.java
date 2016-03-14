@@ -16,7 +16,7 @@ public class Friend {
 	public void read(Scanner in) {
 		String name = in.next() + " " + in.next();
 		String email = in.next();
-		long phone = in.nextInt();
+		long phone = in.nextLong();
 		if (phone < 0) {
 			throw new IllegalArgumentException("read(): bad name");
 		}
