@@ -4,14 +4,17 @@ import java.io.*;
 public class FriendTester {
 	private static Scanner kbd;
 	public static void main(String[] args) {
-		Friends myFriends = new Friends("friends.txt");
+		System.out.println("Welcome to the friends directory.");
+		System.out.print("\nYou give me a friend's name, ");
+		System.out.println(" and I'll give you their information.");
+		
+		String inputFile = "C:/Users/16813/Desktop/friends.txt";
+		
+		Friends myFriends = new Friends(inputFile);
+		
 		ArrayList<Friend> friendsList = new ArrayList<Friend>();
 		
 		friendsList = myFriends.getFriendList();
-		
-		System.out.println("Welcome to friends directory.");
-		System.out.print("\nYou give me a friend's name, ");
-		System.out.println(" and I'll give you their information.");
 		
 		kbd = new Scanner(System.in);
 		
