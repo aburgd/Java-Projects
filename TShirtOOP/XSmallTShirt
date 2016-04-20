@@ -1,0 +1,5 @@
+
+public class XSmallTShirt extends TShirt {
+	public XSmallTShirt() { super("XS"); }
+	public double getPrice() { return 9.00; }
+}
